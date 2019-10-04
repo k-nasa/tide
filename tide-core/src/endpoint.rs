@@ -45,7 +45,7 @@ use crate::{error::Error, response::IntoResponse, Context, Response};
 /// ```
 ///
 /// Tide routes will also accept endpoints with `Fn` signatures of this form, but using the `async` keyword has better ergonomics.
-pub trait Endpoint<State>: Send + Sync + 'static {
+pub trait Endpoint<State>: Send + Sync + Clone +  'static {
     /// The async result of `call`.
     type Fut: Future<Output = Response> + Send + 'static;
 
@@ -53,7 +53,7 @@ pub trait Endpoint<State>: Send + Sync + 'static {
     fn call(&self, cx: Context<State>) -> Self::Fut;
 }
 
-impl<State, F: Send + Sync + 'static, Fut> Endpoint<State> for F
+impl<State, F: Send + Sync + 'static + Clone, Fut> Endpoint<State> for F
 where
     F: Fn(Context<State>) -> Fut,
     Fut: Future + Send + 'static,
