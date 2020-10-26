@@ -49,4 +49,4 @@ mime_guess = "2.0.1"
 percent-encoding = "2.1.0"
 serde = { version = "1.0.102", features = ["derive"] }
 structopt = "0.3.3"
-surf = "1.0.3"
+surf = "2.1.0"
