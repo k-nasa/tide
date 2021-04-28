@@ -1,0 +1,25 @@
+version: 2
+updates:
+- package-ecosystem: cargo
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "20:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: pin-project-lite
+    versions:
+    - 0.2.4
+    - 0.2.5
+  - dependency-name: juniper
+    versions:
+    - 0.15.3
+  - dependency-name: http
+    versions:
+    - 0.2.3
+  - dependency-name: serde_qs
+    versions:
+    - 0.8.2
+  - dependency-name: surf
+    versions:
+    - 2.1.0
